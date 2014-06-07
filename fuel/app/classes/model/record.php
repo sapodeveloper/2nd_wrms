@@ -1,11 +1,11 @@
 <?php
 
-class Model_Highschool extends \Orm\Model
+class Model_Record extends \Orm\Model
 {
 	protected static $_properties = array(
 		'id',
-		'school_name',
-		'kana',
+		'team_id',
+		'distance',
 		'created_at',
 		'updated_at',
 	);
@@ -20,15 +20,15 @@ class Model_Highschool extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
-	protected static $_table_name = 'highschools';
+	protected static $_table_name = 'records';
 
-	protected static $_has_many = array(
-		'teams' => array(
+	protected static $_belongs_to = array(
+		'team' => array(
 			'model_to' => 'Model_Team',
-			'key_from' => 'id',
-			'key_to' => 'school_id',
+			'key_from' => 'team_id',
+			'key_to' => 'id',
 			'cascade_save' => true,
-			'cascade_delete' => false
+			'cascade_save' => false
 		),
 	);
 }
