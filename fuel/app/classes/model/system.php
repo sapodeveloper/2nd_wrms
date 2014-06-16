@@ -23,4 +23,12 @@ class Model_System extends \Orm\Model
 	);
 	protected static $_table_name = 'systems';
 
+	protected static $_has_many = array(
+		'teams' => array(
+			'model_to' => 'Model_Team',
+			'key_from' => 'id',
+			'key_to' => 'team_id',
+			'cascade_save' => true,
+			'cascade_delete' => false
+		),
 }

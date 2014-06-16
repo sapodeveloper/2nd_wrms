@@ -10,6 +10,7 @@ class Create_teams
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
 			'school_id' => array('constraint' => 11, 'type' => 'int'),
 			'team_name' => array('constraint' => 50, 'type' => 'varchar'),
+			'tournament_id' => array('constraint' => 11, 'type' => 'int'),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 

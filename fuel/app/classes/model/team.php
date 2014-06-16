@@ -6,6 +6,7 @@ class Model_Team extends \Orm\Model
 		'id',
 		'school_id',
 		'team_name',
+		'tournament_id',
 		'created_at',
 		'updated_at',
 	);
@@ -26,6 +27,13 @@ class Model_Team extends \Orm\Model
 		'highschool' => array(
 			'model_to' => 'Model_Highschool',
 			'key_from' => 'school_id',
+			'key_to' => 'id',
+			'cascade_save' => true,
+			'cascade_delete' => false
+		),
+		'tournament' => array(
+			'model_to' => 'Model_System',
+			'key_from' => 'tournament_id',
 			'key_to' => 'id',
 			'cascade_save' => true,
 			'cascade_delete' => false
