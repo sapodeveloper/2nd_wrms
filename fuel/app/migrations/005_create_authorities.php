@@ -8,9 +8,18 @@ class Create_authorities
 	{
 		\DBUtil::create_table('authorities', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
-			'authname' => array('constraint' => 16, 'type' => 'varchar'),
+			'username' => array('constraint' => 255, 'type' => 'varchar'),
+			'password' => array('constraint' => 255, 'type' => 'varchar'),
+			'group' => array('constraint' => 11, 'type' => 'int'),
+			'email' => array('constraint' => 255, 'type' => 'varchar'),
+			'profile_fields' => array('type' => 'text'),
+			'last_login' => array('constraint' => 255, 'type' => 'varchar'),
+			'login_hash' => array('constraint' => 255, 'type' => 'varchar'),
+			'created_at' => array('type' => 'timestamp'),
+			'updated_at' => array('type' => 'timestamp'),
 
 		), array('id'));
+
 	}
 
 	public function down()
