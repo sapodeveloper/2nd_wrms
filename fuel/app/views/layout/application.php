@@ -28,7 +28,7 @@
 		<?php echo Html::anchor('/main', '<i class="fa fa-calendar"></i>&nbsp;&nbsp;水ロケット管理システム', array('class' => 'uk-navbar-brand')); ?>
 		<ul class="uk-navbar-nav">
 			<li class="uk-parent" data-uk-dropdown>
-				<a href=""><i class="fa fa-user"></i>&nbsp;&nbsp;Navber&nbsp;<i class="fa fa-sort-asc"></i></a>
+				<a href=""><i class="fa fa-list"></i>&nbsp;&nbsp;Navber&nbsp;<i class="fa fa-sort-asc"></i></a>
 					<div class="uk-dropdown uk-dropdown-navbar">
 						<ul class="uk-nav uk-nav-navbar">
 							<li><?php echo Html::anchor('top/entry/', 'New Registration'); ?></li>
@@ -39,7 +39,7 @@
 			</li>
 		</ul>
 		<div class="uk-text-right">			
-			<?php echo Html::anchor('login/logout', '<button class="uk-button uk-button-danger uk-button-large" type="submit"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;Logout</button>'); ?>
+			<?php echo Html::anchor('auth/logout', '<button class="uk-button uk-button-danger uk-button-large" type="submit"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;Logout</button>'); ?>
 		</div>
 	</nav>
 	

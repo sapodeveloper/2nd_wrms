@@ -10,6 +10,7 @@ return array(
 				1 => '002_create_teams',
 				2 => '003_create_records',
 				3 => '004_create_systems',
+				4 => '005_create_authorities',
 			),
 		),
 		'module' => 
