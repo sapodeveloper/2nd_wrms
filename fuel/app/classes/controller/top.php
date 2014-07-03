@@ -24,7 +24,7 @@ class Controller_Top extends Controller
 
 			Response::redirect('top/entry'); 
 		}
-
+		$data = Model_Highschool::find('all');
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('top/entry');
 		return $view;

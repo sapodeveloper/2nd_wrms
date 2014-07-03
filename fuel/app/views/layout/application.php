@@ -23,7 +23,6 @@
 		<?php
 			if(!Auth::check())
 			{
-				Session::create();
 				$uri = Uri::string();
 				Session::set('uri', $uri);
 				Response::redirect('auth/login');
@@ -34,7 +33,7 @@
 
 	<!-- Navigation Bar-->
 	<nav class="tm-navbar uk-navbar uk-navbar-attached">
-		<?php echo Html::anchor('/main', '<i class="fa fa-calendar"></i>&nbsp;&nbsp;水ロケット管理システム', array('class' => 'uk-navbar-brand')); ?>
+		<?php echo Html::anchor('/main', '<i class="fa fa-rocket"></i>&nbsp;&nbsp;水ロケット管理システム', array('class' => 'uk-navbar-brand')); ?>
 		<ul class="uk-navbar-nav">
 			<li class="uk-parent" data-uk-dropdown>
 				<a href=""><i class="fa fa-list"></i>&nbsp;&nbsp;Navber&nbsp;<i class="fa fa-sort-asc"></i></a>
@@ -79,7 +78,7 @@
 						</div>
 					<?php endif; ?>
 */ ?>
-						<article class="uk-articleuk-panel uk-panel-box">
+						<article class="uk-articleuk-panel uk-panel-box uk-text-center">
 							<?php echo $contents; ?>
 						</article>
 					</div>

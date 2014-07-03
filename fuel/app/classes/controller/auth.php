@@ -12,8 +12,8 @@ class Controller_Auth extends Controller
 			{
 				if ($redirect = Session::get('uri'))
 				{
+					Session::delete('uri');
 					Response::redirect($redirect);
-					Session::destory();
 				}else{
 					Response::redirect('top/entry');
 				}
@@ -29,6 +29,7 @@ class Controller_Auth extends Controller
 	public function action_logout()
 	{
 		Auth::logout();
+		Session::destroy();
 		Response::redirect('auth/login');
 	}
 
