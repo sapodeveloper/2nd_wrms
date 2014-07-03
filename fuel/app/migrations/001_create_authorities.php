@@ -20,6 +20,14 @@ class Create_authorities
 
 		), array('id'));
 
+		$table = 'authorities';
+		\DB::insert($table)->set(array('username' => 'admin',
+			'password' => 'aMP4mDkQAkHjGeBKk9Vb+64wdJucfsWHA1iTHPA98nA=',
+			'group' => 1,
+			'email' => 'sapodev@cc.it-hiroshima.ac.jp',
+			'profile_fields' => 'a:0:{}',
+			'last_login' => '0'))->execute();
+
 	}
 
 	public function down()
