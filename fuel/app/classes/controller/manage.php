@@ -5,9 +5,10 @@ class Controller_Manage extends Controller_Template
 
 	public function action_view()
 	{
-		$data["subnav"] = array('view'=> 'active' );
-		$this->template->title = 'Manage &raquo; View';
-		$this->template->content = View::forge('manage/view', $data);
+		$data = array();
+		$view = View::forge('layout/application');
+		$view->contents = View::forge('manage/view', $data);
+		return $view;
 	}
 
 	public function action_record_list()

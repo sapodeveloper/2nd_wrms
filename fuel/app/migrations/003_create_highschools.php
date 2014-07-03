@@ -14,6 +14,10 @@ class Create_highschools
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 
 		), array('id'));
+
+		$table = 'highschools';
+		\DB::insert($table)->set(array('school_name' => '広島工業大学',
+			'kana' => 'ひろしまこうぎょうだいがく'))->execute();
 	}
 
 	public function down()
