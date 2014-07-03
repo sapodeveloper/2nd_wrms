@@ -2,7 +2,7 @@
 <h1>New Registration</h1>
 <br>
 School name
-
+<?php echo Form::select('school_id', null, $school_date, array('class' => '', 'id' => 'school_id')); ?>
 <br>
 <br>
 Team name
