@@ -25,9 +25,8 @@ class Controller_Top extends Controller
 			Response::redirect('top/entry'); 
 		}
 
-		$data["subnav"] = array('entry'=> 'active' );
 		$view = View::forge('layout/application');
-		$view->contents = View::forge('top/entry',$data);
+		$view->contents = View::forge('top/entry');
 		return $view;
 	}
 

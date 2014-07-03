@@ -15,6 +15,11 @@ class Create_systems
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 
 		), array('id'));
+
+		$table = 'systems';
+		\DB::insert($table)->set(array('tournament_name' => '2014年度オープンキャンパスJuly',
+			'ymd' => '2014-07-27',
+			'rules' => 1))->execute();
 	}
 
 	public function down()

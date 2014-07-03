@@ -10,10 +10,16 @@ class Controller_Auth extends Controller
 			$auth = Auth::instance();
 			if ($auth->login(Input::post('authname'), Input::post('password')))
 			{
-				Response::redirect('top/entry');
+				if ($redirect = Session::get('uri'))
+				{
+					Response::redirect($redirect);
+					Session::destory();
+				}else{
+					Response::redirect('top/entry');
+				}
 			}
 		}
-		$view = View::forge('layout/application');
+		$view = View::forge('layout/login');
 		$view->contents = View::forge('auth/login');
 		$auth = Auth::instance();
 		Auth::logout();
