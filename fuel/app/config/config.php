@@ -270,9 +270,12 @@ return array(
 		 *     array('auth'	=> PKGPATH.'auth/')
 		 * );
 		 */
-		 'packages'  => array(
+
+		'packages'  => array(
 			'orm',
-		 ),
+			'auth',
+		),
+
 
 		/**
 		 * These modules are always loaded on Fuel's startup. You can specify them

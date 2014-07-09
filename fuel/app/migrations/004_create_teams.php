@@ -15,6 +15,11 @@ class Create_teams
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 
 		), array('id'));
+
+		$table = 'teams';
+		\DB::insert($table)->set(array('school_id' => '1',
+			'team_name' => 'カレーうどん三澤',
+			'tournament_id' => '1'))->execute();
 	}
 
 	public function down()

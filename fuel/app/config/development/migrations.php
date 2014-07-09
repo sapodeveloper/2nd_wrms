@@ -6,10 +6,11 @@ return array(
 		array(
 			'default' => 
 			array(
-				0 => '001_create_highschools',
-				1 => '002_create_teams',
-				2 => '003_create_records',
-				3 => '004_create_systems',
+				0 => '001_create_authorities',
+				1 => '002_create_systems',
+				2 => '003_create_highschools',
+				3 => '004_create_teams',
+				4 => '005_create_records',
 			),
 		),
 		'module' => 
