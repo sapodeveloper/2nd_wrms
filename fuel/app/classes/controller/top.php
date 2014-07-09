@@ -7,7 +7,7 @@ class Controller_Top extends Controller
 	{
 		if(Input::method() == 'POST')
 		{
-			$team = Model_Teams::forge(array(
+			$team = Model_Team::forge(array(
 				'school_id' => Input::post('school_id'),
 				'team_name' => Input::post('team_name'),
 				'tournament_id' => 1,
@@ -25,14 +25,11 @@ class Controller_Top extends Controller
 				}
 		}
 
-		$school_data = Model_Highschools::find('all');
-		if($school_data){
-			foreach($school_data as $row):
-				$select_data['school_data'][$row->id]=$row->school_name;
-			endforeach;
-		}
+		$school_data = Model_Highschool::find('all');
 
+		$data['school_lists'] = Model_Highschool::find('all');
 		$data["subnav"] = array('entry'=> 'active' );
+
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('top/entry',$data);
 		return $view;
