@@ -22,9 +22,15 @@ class Controller_Manage extends Controller_Template
 
 	public function action_record_edit()
 	{
-		$data["subnav"] = array('record_edit'=> 'active' );
-		$this->template->title = 'Manage &raquo; Record edit';
-		$this->template->content = View::forge('manage/record_edit', $data);
+		if(! Input::method() == 'POST')
+		{
+			Response::redirect('manage/view');
+		}
+		$team_id = Input::post('team_id');
+		$data['records'] = Model_Record::find('all', array('where' => array('team_id' => $team_id)));
+		$view = View::forge('layout/application');
+		$view->contents = View::forge('manage/record_edit',$data);
+		return $view;
 	}
 
 	public function action_record_detail()

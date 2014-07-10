@@ -1,8 +1,25 @@
-<ul class="nav nav-pills">
-	<li class='<?php echo Arr::get($subnav, "view" ); ?>'><?php echo Html::anchor('manage/view','View');?></li>
-	<li class='<?php echo Arr::get($subnav, "record_list" ); ?>'><?php echo Html::anchor('manage/record_list','Record list');?></li>
-	<li class='<?php echo Arr::get($subnav, "record_edit" ); ?>'><?php echo Html::anchor('manage/record_edit','Record edit');?></li>
-	<li class='<?php echo Arr::get($subnav, "record_detail" ); ?>'><?php echo Html::anchor('manage/record_detail','Record detail');?></li>
-
-</ul>
-<p>Record edit</p>
+<?php echo Asset::js('nt-form_active.js'); ?>
+<?php $i=0; ?>
+<h1 class="uk-article-title">Record input</h1>
+<div class="uk-grid">
+	<div class="uk-width-medium-1-5">&nbsp;</div>
+	<div class="uk-width-medium-3-5">
+		<div class="uk-grid">
+			<div class="uk-width-medium-1-2"><br>School name<br><br>Team name</div>
+			<div class="uk-width-medium-1-2"><br>
+				<form class="uk-form">
+					<fieldset data-uk-margin>
+						<table>
+<?php foreach($records as $record): ?>
+							<tr><td>&nbsp;<?php echo $i; ?>&nbsp;:&nbsp;<input class="uk-text-center" type="text" placeholder="Record Input" value="<?php echo $record->distance; ?>">&nbsp;m</td></tr>
+<?php $i++; ?>
+<?php endforeach; ?>
+							<tr><td>&nbsp;<?php echo $i; ?>&nbsp;:&nbsp;<input class="uk-text-center" type="text" placeholder="Record Input" id="active_form">&nbsp;m</td></tr>
+						</table>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="uk-width-medium-1-5">&nbsp;</div>
+</div><br>
