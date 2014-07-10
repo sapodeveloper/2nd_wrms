@@ -5,7 +5,7 @@
 	<div class="uk-width-medium-1-5">&nbsp;</div>
 	<div class="uk-width-medium-3-5">
 		<div class="uk-grid">
-			<div class="uk-width-medium-1-2"><br>School name<br><br>Team name</div>
+			<div class="uk-width-medium-1-2"><br><?php echo $school->school_name; ?><br><br><?php echo $team->team_name; ?></div>
 			<div class="uk-width-medium-1-2"><br>
 				<form class="uk-form">
 					<fieldset data-uk-margin>

@@ -27,6 +27,8 @@ class Controller_Manage extends Controller_Template
 			Response::redirect('manage/view');
 		}
 		$team_id = Input::post('team_id');
+		$data['team'] = Model_Team::find($team_id);
+		$data['school'] = Model_Highschool::find($data['team']->school_id);
 		$data['records'] = Model_Record::find('all', array('where' => array('team_id' => $team_id)));
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('manage/record_edit',$data);
