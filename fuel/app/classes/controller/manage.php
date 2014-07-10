@@ -22,14 +22,43 @@ class Controller_Manage extends Controller_Template
 
 	public function action_record_edit()
 	{
-		if(! Input::method() == 'POST')
+		$id = Input::get('team_id');
+		if(empty($id))
 		{
 			Response::redirect('manage/view');
 		}
-		$team_id = Input::post('team_id');
-		$data['team'] = Model_Team::find($team_id);
+		if(Input::method() == 'POST')
+		{
+			$i = 1;
+			$records = Model_Record::find('all', array('where' => array('team_id' => $id)));
+			foreach($records as $record){
+				$post_record = Input::post('record'.$i);
+				if($record->distance != $post_record){
+					if(empty($post_record)){
+						$delete_record = Model_Record::find($record->id);
+						$delete_record->delete();
+					}else{
+						$update_record = Model_Record::find($record->id);
+						$update_record->distance = $post_record;
+						$update_record->save();
+					}
+				}
+				$i++;
+			}
+			for(;$i<=3;$i++){
+				if($post_record = Input::post('record'.$i)){
+					$new_record = Model_Record::forge(array(
+						'team_id' => $id,
+						'distance' => $post_record,
+					));
+					$new_record->save();
+				}
+			}
+			Response::redirect('manage/view');
+		}
+		$data['team'] = Model_Team::find($id);
 		$data['school'] = Model_Highschool::find($data['team']->school_id);
-		$data['records'] = Model_Record::find('all', array('where' => array('team_id' => $team_id)));
+		$data['records'] = Model_Record::find('all', array('where' => array('team_id' => $id)));
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('manage/record_edit',$data);
 		return $view;
