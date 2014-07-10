@@ -3,7 +3,7 @@
 	<div class="uk-width-medium-1-5">&nbsp;</div>
 	<div class="uk-width-medium-3-5">
 		<?php echo Asset::js('nt-form_submit.js'); ?>
-		<?php echo Form::open(array('action' => 'manage/record_edit', 'class' => 'uk-form', 'name' => 'team')); ?>
+		<?php echo Form::open(array('action' => 'manage/record_edit', 'class' => 'uk-form', 'name' => 'team', 'method' => 'get')); ?>
 			<fieldset data-uk-margin>
 				<table class="uk-table" border="1">
 					<thead>
