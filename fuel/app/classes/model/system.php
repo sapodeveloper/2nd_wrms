@@ -31,4 +31,5 @@ class Model_System extends \Orm\Model
 			'cascade_save' => true,
 			'cascade_delete' => false
 		),
+	);
 }
