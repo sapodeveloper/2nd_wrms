@@ -9,8 +9,7 @@
 						School name
 					</td>
 					<td>
-						<?php //print_r($school_lists); ?>
-						<?php //echo Form::select('school_id', null, $school_lists, array('class' => '', 'id' => 'school_id')); ?>
+						<?php echo Form::select('school_id', null, $school_lists, array('class' => '', 'id' => 'school_id')); ?>
 					</td>
 				</tr>
 				<tr>
