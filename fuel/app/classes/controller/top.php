@@ -29,13 +29,6 @@ class Controller_Top extends Controller
 		$data['school_lists'] = Model_Highschool::find('all');
 		$data["subnav"] = array('entry'=> 'active' );
 
-
-		$school_data = Model_Highschool::find('all');
-
-		$data['school_lists'] = Model_Highschool::find('all');
-		$data["subnav"] = array('entry'=> 'active' );
-
-
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('top/entry');
 		return $view;
