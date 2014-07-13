@@ -18,7 +18,7 @@
 						Team name
 					</td>
 					<td>
-						<?php echo Form::input('', Input::post('team_name', isset($team) ? $team->team_name : ''), array('class' => '', 'placeholder'=>'input name')); ?>
+						<?php echo Form::input('team_name', Input::post('team_name', isset($team) ? $team->team_name : ''), array('class' => '', 'placeholder'=>'input name')); ?>
 					</td>
 				</tr>
 			</table>
