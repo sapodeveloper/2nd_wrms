@@ -24,20 +24,20 @@ class Controller_Top extends Controller
 					Session::set_flash('error', '失敗');
 				}
 		}
+		# 学校情報を取得
 		$school_data = Model_Highschool::find('all');
+		# 学校情報を格納している連想配列を全て処理する
+		foreach ($school_data as $row) {
+			# 学校情報をフォームへ受け渡す変数に対して処理をおこなう
+			# 第2添字に学校の固有IDを割り当てる
+			# 上記の2次元連想配列の値に学校名を割り当てる
+			$data['school_lists'][$row->id]=$row->school_name;
+		}
 
-		$data['school_lists'] = Model_Highschool::find('all');
 		$data["subnav"] = array('entry'=> 'active' );
-
-
-		$school_data = Model_Highschool::find('all');
-
-		$data['school_lists'] = Model_Highschool::find('all');
-		$data["subnav"] = array('entry'=> 'active' );
-
 
 		$view = View::forge('layout/application');
-		$view->contents = View::forge('top/entry');
+		$view->contents = View::forge('top/entry', $data);
 		return $view;
 	}
 
