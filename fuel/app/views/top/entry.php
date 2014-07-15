@@ -9,8 +9,7 @@
 						School name
 					</td>
 					<td>
-						<?php //print_r($school_lists); ?>
-						<?php //echo Form::select('school_id', null, $school_lists, array('class' => '', 'id' => 'school_id')); ?>
+						<?php echo Form::select('school_id', null, $school_lists, array('class' => '', 'id' => 'school_id')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -18,7 +17,7 @@
 						Team name
 					</td>
 					<td>
-						<?php echo Form::input('', Input::post('team_name', isset($team) ? $team->team_name : ''), array('class' => '', 'placeholder'=>'input name')); ?>
+						<?php echo Form::input('team_name', Input::post('team_name', isset($team) ? $team->team_name : ''), array('class' => '', 'placeholder'=>'input name')); ?>
 					</td>
 				</tr>
 			</table>

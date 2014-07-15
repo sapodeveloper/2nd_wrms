@@ -24,20 +24,16 @@ class Controller_Top extends Controller
 					Session::set_flash('error', '失敗');
 				}
 		}
-		$school_data = Model_Highschool::find('all');
-
-		$data['school_lists'] = Model_Highschool::find('all');
-		$data["subnav"] = array('entry'=> 'active' );
-
 
 		$school_data = Model_Highschool::find('all');
+		foreach ($school_data as $row) {
+			$data['school_lists'][$row->id]=$row->school_name;
+			} 
 
-		$data['school_lists'] = Model_Highschool::find('all');
 		$data["subnav"] = array('entry'=> 'active' );
-
 
 		$view = View::forge('layout/application');
-		$view->contents = View::forge('top/entry');
+		$view->contents = View::forge('top/entry', $data);
 		return $view;
 	}
 
