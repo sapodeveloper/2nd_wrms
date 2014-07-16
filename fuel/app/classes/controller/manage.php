@@ -8,11 +8,12 @@ class Controller_Manage extends Controller_Template
 		$data['non_record_team_lists'] = DB::query('SELECT teams.id AS team_id,teams.team_name AS name
 			FROM teams
 			WHERE NOT EXISTS (SELECT *
-			FROM records,teams
+			FROM records
 			WHERE records.team_id = teams.id)')->as_object()->execute()->as_array();
-		$data['team_lists'] = DB::query('SELECT teams.id AS team_id,teams.team_name AS name,COUNT(records.id) AS records
+		$data['team_lists'] = DB::query('SELECT teams.id AS team_id,teams.team_name AS name,COUNT(records.team_id) AS records
 			FROM records,teams
-			WHERE records.team_id = teams.id')->as_object()->execute()->as_array();
+			WHERE records.team_id = teams.id
+			GROUP BY records.team_id')->as_object()->execute()->as_array();
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('manage/view', $data);
 		return $view;
@@ -20,9 +21,15 @@ class Controller_Manage extends Controller_Template
 
 	public function action_record_list()
 	{
-		$data["subnav"] = array('record_list'=> 'active' );
-		$this->template->title = 'Manage &raquo; Record list';
-		$this->template->content = View::forge('manage/record_list', $data);
+		$data['record_lists'] = DB::query('SELECT records.id AS id,teams.team_name AS name,teams.id AS team_id,MAX(records.distance) AS distance
+			FROM records,teams
+			WHERE records.team_id = teams.id
+			GROUP BY records.team_id
+			ORDER BY MAX(records.distance) DESC
+			LIMIT 0,5')->as_object()->execute()->as_array();
+		$view = View::forge('layout/application');
+		$view->contents = View::forge('manage/record_list', $data);
+		return $view;
 	}
 
 	public function action_record_edit()
