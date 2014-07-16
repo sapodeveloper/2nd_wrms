@@ -78,9 +78,18 @@ class Controller_Manage extends Controller_Template
 
 	public function action_record_detail()
 	{
-		$data["subnav"] = array('record_detail'=> 'active' );
-		$this->template->title = 'Manage &raquo; Record detail';
-		$this->template->content = View::forge('manage/record_detail', $data);
+		$id = Input::get('team_id');
+		if(empty($id))
+		{
+			Response::redirect('manage/view');
+		}
+		$data['team'] = Model_Team::find($id);
+		$data['school'] = Model_Highschool::find($data['team']->school_id);
+		$data['records'] = Model_Record::find('all', array('where' => array('team_id' => $id)));
+		$data['best_record'] = Model_Record::find('first', array('where' => array('team_id' => $id), 'order_by' => array('distance' => 'desc')));
+		$view = View::forge('layout/application');
+		$view->contents = View::forge('manage/record_detail',$data);
+		return $view;
 	}
 
 }
