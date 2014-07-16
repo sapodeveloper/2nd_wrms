@@ -12,7 +12,12 @@
 					</thead>
 					<tbody>
 <?php foreach ($team_lists as $team): ?>
+<?php if($team->name != NULL): ?>
 						<tr><td><?php echo $team->name; ?></td><td>&nbsp;<?php echo $team->records; ?>&nbsp;/&nbsp;3&nbsp;</td><td><button class="button uk-button uk-button-success uk-button-large" type="button" onClick="form_submit(<?php echo $team->team_id; ?>)"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Record Input</button></td></tr>
+<?php endif; ?>
+<?php endforeach; ?>
+<?php foreach ($non_record_team_lists as $no_team): ?>
+						<tr><td><?php echo $no_team->name; ?></td><td>&nbsp;0&nbsp;/&nbsp;3&nbsp;</td><td><button class="button uk-button uk-button-success uk-button-large" type="button" onClick="form_submit(<?php echo $no_team->team_id; ?>)"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Record Input</button></td></tr>
 <?php endforeach; ?>
 					</tbody>
 				</table>
