@@ -3,20 +3,21 @@
 <?php echo Form::open(array('action' => 'top/entry', 'class' => 'uk-form')); ?>
 	<fieldset>
 		<center>
-			<table align="center">
+			<table>
 				<tr>
-					<td>
+					<td align="center">
 						School name
 					</td>
-					<td>
+					<td align="center">
 						<?php echo Form::select('school_id', null, $school_lists, array('class' => '', 'id' => 'school_id')); ?>
 					</td>
 				</tr>
+				<tr><td>　</td></tr>
 				<tr>
-					<td>
+					<td align="center">
 						Team name
 					</td>
-					<td>
+					<td align="center">
 						<?php echo Form::input('team_name', Input::post('team_name', isset($team) ? $team->team_name : ''), array('class' => '', 'placeholder'=>'input name')); ?>
 					</td>
 				</tr>
