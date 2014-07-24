@@ -14,7 +14,7 @@
 			</div>
 			<div data-uk-scrollspy="{cls:'uk-animation-slide-left', delay:600, repeat: true}">
 				<div class="uk-form-row">
-					<?php echo Form::input('password', '', array('placeholder' => 'Password Input', 'class' => 'uk-text-center', 'type' => 'text')); ?>
+					<?php echo Form::input('password', '', array('placeholder' => 'Password Input', 'class' => 'uk-text-center', 'type' => 'password')); ?>
 				</div>
 			</div>
 		</center>

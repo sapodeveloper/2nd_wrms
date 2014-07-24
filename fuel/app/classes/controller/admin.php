@@ -5,6 +5,9 @@ class Controller_Admin extends Controller_Template
 
 	public function action_team_list()
 	{
+		if(Model_Authority::find(Auth::get('id'))->id!=1){
+			Response::redirect('auth/login');
+		}
 		if(Input::method() == 'POST')
 		{
 			$id = Input::post('team_id');

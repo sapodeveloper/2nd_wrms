@@ -42,6 +42,9 @@
 							<li><?php echo Html::anchor('top/entry/', 'New Registration'); ?></li>
 							<li><?php echo Html::anchor('manage/view', 'Participant List'); ?></li>
 							<li><?php echo Html::anchor('manage/record_list', 'Record Display List'); ?></li>
+<?php if(Model_Authority::find(Auth::get('id'))->id==1): ?>
+							<li><?php echo Html::anchor('admin/team_list', 'Administrator function'); ?></li>
+<?php endif; ?>
 						</ul>
 					</div>
 			</li>
