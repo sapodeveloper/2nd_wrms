@@ -33,7 +33,7 @@
 
 	<!-- Navigation Bar-->
 	<nav class="tm-navbar uk-navbar uk-navbar-attached">
-		<?php echo Html::anchor('/main', '<i class="fa fa-rocket"></i>&nbsp;&nbsp;水ロケット管理システム', array('class' => 'uk-navbar-brand')); ?>
+		<div class='uk-navbar-brand'><i class="fa fa-rocket"></i>&nbsp;&nbsp;水ロケット管理システム</div>
 		<ul class="uk-navbar-nav">
 			<li class="uk-parent" data-uk-dropdown>
 				<a href=""><i class="fa fa-list"></i>&nbsp;&nbsp;Navber&nbsp;<i class="fa fa-sort-asc"></i></a>
