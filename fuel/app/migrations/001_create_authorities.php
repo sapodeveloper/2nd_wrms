@@ -27,6 +27,12 @@ class Create_authorities
 			'email' => 'sapodev@cc.it-hiroshima.ac.jp',
 			'profile_fields' => 'a:0:{}',
 			'last_login' => '0'))->execute();
+		\DB::insert($table)->set(array('username' => 'survey',
+			'password' => 'aMP4mDkQAkHjGeBKk9Vb+64wdJucfsWHA1iTHPA98nA=',
+			'group' => 2,
+			'email' => 'sapodev@cc.it-hiroshima.ac.jp',
+			'profile_fields' => 'a:0:{}',
+			'last_login' => '0'))->execute();
 
 	}
 
