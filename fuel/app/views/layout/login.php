@@ -31,7 +31,7 @@
 						<ul class="uk-nav uk-nav-navbar">
 							<li><?php echo Html::anchor('top/entry/', 'New Registration'); ?></li>
 							<li><?php echo Html::anchor('manage/view', 'Participant List'); ?></li>
-							<li><?php echo Html::anchor('manage/recordd_list', 'Record Display List'); ?></li>
+							<li><?php echo Html::anchor('manage/record_list', 'Record Display List'); ?></li>
 						</ul>
 					</div>
 			</li>
