@@ -8,11 +8,19 @@
 				<table class="uk-table" border="1">
 					<thead>
 						<?php echo Form::hidden('team_id','',array()); ?>
-						<tr><td class="uk-width-medium-1-3">School name</td><td class="uk-width-medium-1-3">Team name</td><td class="uk-width-medium-1-3">Button</td></tr>
+						<tr>
+							<td class="uk-width-medium-1-3">School name</td>
+							<td class="uk-width-medium-1-3">Team name</td>
+							<td class="uk-width-medium-1-3">Button</td>
+						</tr>
 					</thead>
 					<tbody>
 <?php foreach($teams as $team): ?>
-						<tr><td><?php echo $team->school_name; ?></td><td><?php echo $team->team_name; ?></td><td><button class="uk-button uk-button-danger uk-button-large" type="button" onClick="check_submit(<?php echo $team->team_id; ?>)"><i class="fa fa-eraser"></i>&nbsp;&nbsp;Delete</button></td></tr>
+						<tr>
+							<td><?php echo $team->school_name; ?></td>
+							<td><a href="team_edit?team_id=<?php echo $team->team_id; ?>"><?php echo $team->team_name; ?></a></td>
+							<td><button class="uk-button uk-button-danger uk-button-large" type="button" onClick="check_submit(<?php echo $team->team_id; ?>)"><i class="fa fa-eraser"></i>&nbsp;&nbsp;Delete</button></td>
+						</tr>
 <?php endforeach; ?>
 					</tbody>
 				</table>

@@ -23,6 +23,31 @@ class Controller_Admin extends Controller_Template
 		return $view;
 	}
 
+	public function action_team_edit()
+	{
+		if(Model_Authority::find(Auth::get('id'))->id!=1){
+			Response::redirect('auth/login');
+		}
+		if(Input::get('team_id')){
+			$id = Input::get('team_id');
+		}else{
+			Response::redirect('admin/team_list');
+		}
+		if(Input::method() == 'POST'){
+			$team = Model_Team::find($id);
+			$team->team_name = Input::post('team_name');
+			$team->leader_name = Input::post('leader_name');
+			$team->teammate1_name = Input::post('teammate1_name');
+			$team->teammate2_name = Input::post('teammate2_name');
+			$team->save();
+		}
+		$data['team'] = Model_Team::find($id);
+		$data['school'] = Model_Highschool::find($data['team']->school_id);
+		$view = View::forge('layout/application');
+		$view->contents = View::forge('admin/team_edit',$data);
+		return $view;
+	}
+
 	public function action_system()
 	{
 		$data["subnav"] = array('system'=> 'active' );
