@@ -45,6 +45,10 @@ class Controller_Top extends Controller
 						Session::set_flash('error', '失敗');
 					}
 			}
+		}else{
+			$data['leader_name'] = "";
+			$data['teammate1_name'] = "";
+			$data['teammate2_name'] = "";
 		}
 	
 		$school_data = Model_Highschool::find('all');
