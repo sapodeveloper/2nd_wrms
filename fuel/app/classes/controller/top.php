@@ -7,6 +7,9 @@ class Controller_Top extends Controller
 	{
 		if(Input::method() == 'POST')
 		{
+			if(Input::post('school_id') == -1){
+				Response::redirect('top/entry_extend');
+			}
 			if(Input::post('leader_name')){
 				$data['leader_name'] = Input::post('leader_name');
 				$data['teammate1_name'] = Input::post('teammate1_name');
@@ -51,7 +54,8 @@ class Controller_Top extends Controller
 			$data['teammate2_name'] = "";
 		}
 	
-		$school_data = Model_Highschool::find('all');
+		$school_data = Model_Highschool::find('all', array('where' => array(array('pref_id', '>=', '31'), array(array('pref_id', '<=', '39')))));
+		$data['school_lists'][-1] = "中四国以外";
 		foreach ($school_data as $row) {
 			$data['school_lists'][$row->id]=$row->school_name;
 		} 
@@ -61,4 +65,18 @@ class Controller_Top extends Controller
 		return $view;
 	}
 
+	public function action_entry_extend()
+	{
+		$school_data = Model_Highschool::find('all');
+		foreach ($school_data as $row) {
+			$data['school_lists'][$row->id]=$row->school_name;
+		} 
+		$data['leader_name'] = "";
+		$data['teammate1_name'] = "";
+		$data['teammate2_name'] = "";
+
+		$view = View::forge('layout/application');
+		$view->contents = View::forge('top/entry', $data);
+		return $view;
+	}
 }

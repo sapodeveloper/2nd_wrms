@@ -6,6 +6,7 @@ class Model_Highschool extends \Orm\Model
 		'id',
 		'school_name',
 		'kana',
+		'pref_id',
 		'created_at',
 		'updated_at',
 	);
