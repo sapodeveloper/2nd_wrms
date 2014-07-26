@@ -19,14 +19,14 @@ class Create_teams
 
 		), array('id'));
 
-		$table = 'teams';
+/*		$table = 'teams';
 		\DB::insert($table)->set(array('school_id' => '1',
 			'team_name' => 'カレーうどん三澤',
 			'leader_name' => '三澤',
 			'teammate1_name' => '田中',
 			'teammate2_name' => '出口',
 			'tournament_id' => '1'))->execute();
-	}
+*/	}
 
 	public function down()
 	{
