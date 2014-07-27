@@ -50,6 +50,9 @@ class Controller_Admin extends Controller_Template
 
 	public function action_highschool_input()
 	{
+		if(Model_Authority::find(Auth::get('id'))->id!=1){
+			Response::redirect('auth/login');
+		}
 		if(Input::post('school_name')){
 			$school = Model_Highschool::forge(array(
 				'school_name' => Input::post('school_name'),
@@ -75,9 +78,32 @@ class Controller_Admin extends Controller_Template
 
 	public function action_system()
 	{
+		if(Model_Authority::find(Auth::get('id'))->id!=1){
+			Response::redirect('auth/login');
+		}
 		$data["subnav"] = array('system'=> 'active' );
 		$this->template->title = 'Admin &raquo; System';
 		$this->template->content = View::forge('admin/system', $data);
 	}
 
+	public function action_tournament()
+	{
+		if(Model_Authority::find(Auth::get('id'))->id!=1){
+			Response::redirect('auth/login');
+		}
+		if(!Input::get('tournament_id')){
+			Response::redirect('top/entry');
+		}
+		$id = Input::get('tournament_id');
+		$data['tournament'] = Model_System::find($id);
+		$data['teams'] = DB::query('SELECT school_name,team_name,leader_name,teammate1_name,teammate2_name,MAX(distance) AS distance 
+			FROM teams AS t,highschools AS h,records AS r 
+			WHERE t.tournament_id = '.$id.' 
+			AND t.school_id = h.id AND t.id = r.team_id 
+			GROUP BY t.id
+			ORDER BY MAX(r.distance) DESC')->as_object()->execute()->as_array();
+		$view = View::forge('layout/application');
+		$view->contents = View::forge('admin/tournament',$data);
+		return $view;
+	}
 }

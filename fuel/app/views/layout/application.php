@@ -45,6 +45,7 @@
 <?php if(Model_Authority::find(Auth::get('id'))->id==1): ?>
 							<li><?php echo Html::anchor('admin/team_list', 'Administrator function'); ?></li>
 							<li><?php echo Html::anchor('admin/highschool_input', 'Highschool Input'); ?></li>
+							<li><?php echo Html::anchor('admin/tournament?tournament_id=1', 'Tournament Record'); ?></li>
 <?php endif; ?>
 						</ul>
 					</div>
