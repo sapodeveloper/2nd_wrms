@@ -44,6 +44,7 @@
 							<li><?php echo Html::anchor('manage/record_list', 'Record Display List'); ?></li>
 <?php if(Model_Authority::find(Auth::get('id'))->id==1): ?>
 							<li><?php echo Html::anchor('admin/team_list', 'Administrator function'); ?></li>
+							<li><?php echo Html::anchor('admin/highschool_input', 'Highschool Input'); ?></li>
 <?php endif; ?>
 						</ul>
 					</div>
