@@ -1,4 +1,4 @@
-<h1 class="uk-article-title">Record Display List</h1>
+<h1 class="uk-article-title">記録表示ページ【順位順】</h1>
 <div class="uk-grid">
 	<div class="uk-width-medium-1-5">&nbsp;</div>
 	<div class="uk-width-medium-3-5">
@@ -8,16 +8,16 @@
 				<table class="uk-table" border="1">
 					<thead>
 						<?php echo Form::hidden('team_id', '', array()); ?>
-						<tr><td class="uk-width-medium-1-4">Ranking</td><td class="uk-width-medium-1-4">Team name</td><td class="uk-width-medium-1-4">Best Record</td><td class="uk-width-medium-1-4">Button</td></tr>
+						<tr><td class="uk-width-medium-1-5">順位</td><td class="uk-width-medium-1-5">学校名</td><td class="uk-width-medium-1-5">チーム名</td><td class="uk-width-medium-1-5">最高記録</td><td class="uk-width-medium-1-5">記録表示</td></tr>
 					</thead>
 					<tbody>
 <?php $i = 1; ?>
 <?php foreach($record_lists as $record): ?>
-						<tr><td><?php echo $i; ?></td><td><?php echo $record->name ; ?></td><td><?php echo $record->distance ?> m</td><td><button class="button uk-button uk-button-success uk-button-large" type="button" onClick="form_submit(<?php echo $record->team_id; ?>)"><i class="fa fa-search"></i>&nbsp;&nbsp;Records View</button></td></tr>
+						<tr><td><?php echo $i; ?></td><td><?php echo $record->school; ?></td><td><?php echo $record->name ; ?></td><td><?php echo $record->distance ?> m</td><td><button class="button uk-button uk-button-success uk-button-large" type="button" onClick="form_submit(<?php echo $record->team_id; ?>)"><i class="fa fa-search"></i>&nbsp;&nbsp;記録表示</button></td></tr>
 <?php $i++; ?>
 <?php endforeach; ?>
 <?php for(;$i<=5;$i++): ?>
-						<tr><td><?php echo $i; ?></td><td>No Name</td><td>----.--- m</td><td><a href="" class="uk-button uk-button-success uk-button-large"><i class="fa fa-search"></i>&nbsp;&nbsp;Records View</a></td></tr>
+						<tr><td><?php echo $i; ?></td><td>未登録</td><td>未登録</td><td>----.--- m</td><td><button class="button uk-button uk-button-success uk-button-large" type="button"><i class="fa fa-search"></i>&nbsp;&nbsp;記録表示</button></td></tr>
 <?php endfor; ?>
 					</tbody>
 				</table>

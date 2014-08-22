@@ -36,21 +36,23 @@
 		<div class='uk-navbar-brand'><i class="fa fa-rocket"></i>&nbsp;&nbsp;水ロケット管理システム</div>
 		<ul class="uk-navbar-nav">
 			<li class="uk-parent" data-uk-dropdown>
-				<a href=""><i class="fa fa-list"></i>&nbsp;&nbsp;Navber&nbsp;<i class="fa fa-sort-asc"></i></a>
+				<a href=""><i class="fa fa-list"></i>&nbsp;&nbsp;ナビゲーションバー&nbsp;<i class="fa fa-sort-asc"></i></a>
 					<div class="uk-dropdown uk-dropdown-navbar">
 						<ul class="uk-nav uk-nav-navbar">
-							<li><?php echo Html::anchor('top/entry/', 'New Registration'); ?></li>
-							<li><?php echo Html::anchor('manage/view', 'Participant List'); ?></li>
-							<li><?php echo Html::anchor('manage/record_list', 'Record Display List'); ?></li>
+							<li><?php echo Html::anchor('top/entry/', '学校・参加者登録ページ'); ?></li>
+							<li><?php echo Html::anchor('manage/view', '参加者リスト'); ?></li>
+							<li><?php echo Html::anchor('manage/record_list', '記録表示ページ【順位順】'); ?></li>
 <?php if(Model_Authority::find(Auth::get('id'))->id==1): ?>
-							<li><?php echo Html::anchor('admin/team_list', 'Administrator function'); ?></li>
+							<li><?php echo Html::anchor('admin/team_list', '管理者機能【削除ページ】'); ?></li>
+							<li><?php echo Html::anchor('admin/highschool_input', '管理者機能【学校追加ページ】'); ?></li>
+							<li><?php echo Html::anchor('admin/tournament?tournament_id=1', '管理者機能【記録出力ページ】'); ?></li>
 <?php endif; ?>
 						</ul>
 					</div>
 			</li>
 		</ul>
 		<div class="uk-text-right">			
-			<?php echo Html::anchor('auth/logout', '<button class="uk-button uk-button-danger uk-button-large" type="submit"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;Logout</button>'); ?>
+			<?php echo Html::anchor('auth/logout', '<button class="uk-button uk-button-danger uk-button-large" type="submit"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;ログアウト</button>'); ?>
 		</div>
 	</nav>
 	

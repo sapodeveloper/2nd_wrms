@@ -5,15 +5,24 @@ class Controller_Manage extends Controller_Template
 
 	public function action_view()
 	{
-		$data['non_record_team_lists'] = DB::query('SELECT teams.id AS team_id,teams.team_name AS name
-			FROM teams
-			WHERE NOT EXISTS (SELECT *
+		$data['non_record_team_lists'] = DB::query('SELECT teams.id AS team_id,teams.team_name AS name,highschools.school_name AS school
+			FROM teams,highschools
+			WHERE teams.school_id = highschools.id
+			AND NOT EXISTS (SELECT *
 			FROM records
 			WHERE records.team_id = teams.id)')->as_object()->execute()->as_array();
-		$data['team_lists'] = DB::query('SELECT teams.id AS team_id,teams.team_name AS name,COUNT(records.team_id) AS records
-			FROM records,teams
-			WHERE records.team_id = teams.id
-			GROUP BY records.team_id')->as_object()->execute()->as_array();
+		$data['team_lists'] = DB::query('SELECT teams.id AS team_id,teams.team_name AS name,COUNT(records.team_id) AS records,highschools.school_name AS school
+			FROM records,teams,highschools
+			WHERE teams.school_id = highschools.id
+			AND records.team_id = teams.id
+			GROUP BY records.team_id
+			HAVING COUNT(records.team_id) < 3')->as_object()->execute()->as_array();
+		$data['end_team_lists'] = DB::query('SELECT teams.id AS team_id,teams.team_name AS name,COUNT(records.team_id) AS records,highschools.school_name AS school
+			FROM records,teams,highschools
+			WHERE teams.school_id = highschools.id
+			AND records.team_id = teams.id
+			GROUP BY records.team_id
+			HAVING COUNT(records.team_id) >= 3')->as_object()->execute()->as_array();
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('manage/view', $data);
 		return $view;
@@ -21,9 +30,10 @@ class Controller_Manage extends Controller_Template
 
 	public function action_record_list()
 	{
-		$data['record_lists'] = DB::query('SELECT records.id AS id,teams.team_name AS name,teams.id AS team_id,MAX(records.distance) AS distance
-			FROM records,teams
-			WHERE records.team_id = teams.id
+		$data['record_lists'] = DB::query('SELECT records.id AS id,teams.team_name AS name,teams.id AS team_id,MAX(records.distance) AS distance,highschools.school_name AS school
+			FROM records,teams,highschools
+			WHERE teams.school_id = highschools.id
+			AND records.team_id = teams.id
 			GROUP BY records.team_id
 			ORDER BY MAX(records.distance) DESC
 			LIMIT 0,5')->as_object()->execute()->as_array();
