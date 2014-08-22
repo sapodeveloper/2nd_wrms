@@ -1,4 +1,4 @@
-<h1 class="uk-article-title">Team edit</h1>
+<h1 class="uk-article-title">チーム編集機能</h1>
 <?php echo Form::open(array('action' => 'admin/team_edit?team_id='.$team->id, 'class' => 'uk-form')); ?>
 	<div class="uk-grid">
 		<div class="uk-width-medium-1-5">&nbsp;</div>
@@ -42,5 +42,5 @@
 		</div>
 		<div class="uk-width-medium-1-5">&nbsp;</div>
 	</div><br>
-	<button class="uk-button uk-button-primary uk-button-large"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Registration</button>
+	<button class="uk-button uk-button-primary uk-button-large"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;登録</button>
 <?php echo Form::close(); ?>

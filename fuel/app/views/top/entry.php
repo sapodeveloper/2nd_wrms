@@ -1,4 +1,4 @@
-<h1>New Registration</h1>
+<h1>学校・参加者登録ページ</h1>
 <br>
 <div class="uk-grid">
 	<div class="uk-width-medium-1-3">&nbsp;</div>
@@ -8,7 +8,7 @@
 				<table>
 					<tr>
 						<td>
-							School name
+							学校名
 						</td>
 						<td>
 							&nbsp;
@@ -20,25 +20,25 @@
 					<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 					<tr>
 						<td>
-							Team name
+							チーム名
 						</td>
 						<td>
 							&nbsp;
 						</td>
 						<td>
-							<?php echo Form::input('team_name', Input::post('team_name', isset($team) ? $team->team_name : ''), array('class' => 'uk-text-center', 'placeholder'=>'input name')); ?>
+							<?php echo Form::input('team_name', Input::post('team_name', isset($team) ? $team->team_name : ''), array('class' => 'uk-text-center', 'placeholder'=>'チーム名　入力')); ?>
 						</td>
 					</tr>
 					<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 					<tr>
 						<td>
-							Team members
+							メンバー名
 						</td>
 						<td>
 							&nbsp;
 						</td>
 						<td>
-							<?php echo Form::input('leader_name', $leader_name, array('class' => 'uk-text-center', 'placeholder'=>'input name')); ?>
+							<?php echo Form::input('leader_name', $leader_name, array('class' => 'uk-text-center', 'placeholder'=>'メンバー名　入力')); ?>
 						</td>
 					</tr>
 					<tr>
@@ -49,7 +49,7 @@
 							&nbsp;
 						</td>
 						<td>
-							<?php echo Form::input('teammate1_name', $teammate1_name, array('class' => 'uk-text-center', 'placeholder'=>'input name')); ?>
+							<?php echo Form::input('teammate1_name', $teammate1_name, array('class' => 'uk-text-center', 'placeholder'=>'メンバー名　入力')); ?>
 						</td>
 					</tr>
 					<tr>
@@ -60,7 +60,7 @@
 							&nbsp;
 						</td>
 						<td>
-							<?php echo Form::input('teammate2_name', $teammate2_name, array('class' => 'uk-text-center', 'placeholder'=>'input name')); ?>
+							<?php echo Form::input('teammate2_name', $teammate2_name, array('class' => 'uk-text-center', 'placeholder'=>'メンバー名　入力')); ?>
 						</td>
 					</tr>
 				</table>
@@ -68,6 +68,6 @@
 		</div>
 	</div>
 	<br>
-	<button class="uk-button uk-button-primary uk-button-large"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;Registration</button>
+	<button class="uk-button uk-button-primary uk-button-large"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;登録</button>
 <?php echo Form::close(); ?>
 <br>

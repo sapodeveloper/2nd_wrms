@@ -26,12 +26,12 @@
 		<div class='uk-navbar-brand'><i class="fa fa-rocket"></i>&nbsp;&nbsp;水ロケット管理システム</div>
 		<ul class="uk-navbar-nav">
 			<li class="uk-parent" data-uk-dropdown>
-				<a href=""><i class="fa fa-list"></i>&nbsp;&nbsp;Navber&nbsp;<i class="fa fa-sort-asc"></i></a>
+				<a href=""><i class="fa fa-list"></i>&nbsp;&nbsp;ナビゲーションバー&nbsp;<i class="fa fa-sort-asc"></i></a>
 					<div class="uk-dropdown uk-dropdown-navbar">
 						<ul class="uk-nav uk-nav-navbar">
-							<li><?php echo Html::anchor('top/entry/', 'New Registration'); ?></li>
-							<li><?php echo Html::anchor('manage/view', 'Participant List'); ?></li>
-							<li><?php echo Html::anchor('manage/record_list', 'Record Display List'); ?></li>
+							<li><?php echo Html::anchor('top/entry/', '学校・参加者登録ページ'); ?></li>
+							<li><?php echo Html::anchor('manage/view', '参加者リスト'); ?></li>
+							<li><?php echo Html::anchor('manage/record_list', '記録入力ページ'); ?></li>
 						</ul>
 					</div>
 			</li>
