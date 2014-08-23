@@ -56,7 +56,7 @@
 						回</td>
 						<td class="uk-width-medium-1-4">
 <?php if($tournament->condition != 1): ?>
-							<button class="uk-button uk-button-primary uk-button-large" type="button" onClick="select_tournament(<?php echo $tournament->id; ?>)"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;登録</button>
+							<button class="uk-button uk-button-primary uk-button-large" type="button" onClick="select_tournament(<?php echo $tournament->id; ?>)"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;選択</button>
 <?php else: ?>
 							<div class="uk-button uk-button-success uk-button-large"></i>&nbsp;&nbsp;開催中</div>
 <?php endif; ?>
