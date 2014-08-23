@@ -81,9 +81,45 @@ class Controller_Admin extends Controller_Template
 		if(Model_Authority::find(Auth::get('id'))->id!=1){
 			Response::redirect('auth/login');
 		}
-		$data["subnav"] = array('system'=> 'active' );
-		$this->template->title = 'Admin &raquo; System';
-		$this->template->content = View::forge('admin/system', $data);
+		if(Input::method() == 'POST'){
+			$old_tournament = Model_System::find('first', array('where' => array('condition' => 1)));
+			if($old_tournament){
+				$old_tournament->condition = 0;
+				$old_tournament->save();
+			}
+			if(Input::post('tournament_id')==0){
+				$create_tournament = Model_System::forge(array(
+					'ymd' => Input::post('ymd'),
+					'tournament_name' => 'オープンキャンパス',
+					'rules' => 1,
+					'condition' => 1,
+				));
+				$create_tournament->save();
+			}else{
+				$new_tournament = Model_System::find(Input::post('tournament_id'));
+				$new_tournament->condition = 1;
+				$new_tournament->save();
+			}
+		}
+		$data['tournaments']= DB::query('SELECT id,tournament_name AS name,YEAR(ymd) AS year,rules,ymd,`condition` 
+			FROM systems
+			WHERE 1
+			ORDER BY ymd DESC')->as_object()->execute()->as_array();
+		foreach($data['tournaments'] as &$tournament){
+			$tournament->count = DB::query('SELECT COUNT(id) AS id 
+			FROM systems 
+			WHERE YEAR(ymd) = '.$tournament->year.' 
+			AND ymd <= \''.$tournament->ymd.'\' 
+			GROUP BY tournament_name')->as_object()->execute()->as_array();
+		}
+		$now_year = date('Y');
+		$jul_first = 7 - date('w',mktime(0,0,0,7,7,$now_year));
+		for($i=0;$i<8;$i++){
+			$data['days'][$i] = date('Y-m-d',mktime(0,0,0,7,7*$i+$jul_first,$now_year));
+		}
+		$view = View::forge('layout/application');
+		$view->contents = View::forge('admin/system', $data);
+		return $view;
 	}
 
 	public function action_tournament()

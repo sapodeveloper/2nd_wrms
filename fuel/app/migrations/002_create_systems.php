@@ -11,6 +11,7 @@ class Create_systems
 			'tournament_name' => array('constraint' => 50, 'type' => 'varchar'),
 			'ymd' => array('type' => 'date'),
 			'rules' => array('constraint' => 11, 'type' => 'int'),
+			'condition' => array('constraint' => 11, 'type' => 'int'),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 
@@ -19,7 +20,8 @@ class Create_systems
 		$table = 'systems';
 		\DB::insert($table)->set(array('tournament_name' => '2014年度オープンキャンパスJuly',
 			'ymd' => '2014-07-27',
-			'rules' => 1))->execute();
+			'rules' => 1,
+			'condition' => 1))->execute();
 	}
 
 	public function down()
