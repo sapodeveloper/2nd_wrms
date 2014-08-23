@@ -14,9 +14,11 @@ class Controller_Admin extends Controller_Template
 			$team = Model_Team::find($id);
 			$team->delete();
 		}
+		$tournament = Model_System::find('first', array('where' => array('condition' => 1)));
 		$data['teams'] = DB::query('SELECT teams.team_name AS team_name, highschools.school_name AS school_name, teams.id AS team_id
 			FROM highschools,teams
-			WHERE highschools.id = teams.school_id;
+			WHERE highschools.id = teams.school_id
+			AND teams.tournament_id = '.$tournament->id.'
 			ORDER BY highschools.id DESC')->as_object()->execute()->as_array();
 		$view = View::forge('layout/application');
 		$view->contents = View::forge('admin/team_list',$data);
