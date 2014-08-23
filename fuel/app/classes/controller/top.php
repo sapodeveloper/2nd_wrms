@@ -28,13 +28,14 @@ class Controller_Top extends Controller
 				$data['teammate2_name'] = "";
 			}
 			if(Input::post('team_name')){
+				$tournament = Model_System::find('first', array('where' => array('condition' => 1)));
 				$team = Model_Team::forge(array(
 					'school_id' => Input::post('school_id'),
 					'team_name' => Input::post('team_name'),
 					'leader_name' => $data['leader_name'],
 					'teammate1_name' => $data['teammate1_name'],
 					'teammate2_name' => $data['teammate2_name'],
-					'tournament_id' => 1,
+					'tournament_id' => $tournament->id,
 					'created_at' => 1,
 					'updated_at' => 0,
 				));

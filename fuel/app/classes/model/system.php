@@ -7,6 +7,7 @@ class Model_System extends \Orm\Model
 		'tournament_name',
 		'ymd',
 		'rules',
+		'condition',
 		'created_at',
 		'updated_at',
 	);

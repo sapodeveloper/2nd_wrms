@@ -46,6 +46,7 @@
 							<li><?php echo Html::anchor('admin/team_list', '管理者機能【削除ページ】'); ?></li>
 							<li><?php echo Html::anchor('admin/highschool_input', '管理者機能【学校追加ページ】'); ?></li>
 							<li><?php echo Html::anchor('admin/tournament?tournament_id=1', '管理者機能【記録出力ページ】'); ?></li>
+							<li><?php echo Html::anchor('admin/system', '管理者機能【システム】'); ?></li>
 <?php endif; ?>
 						</ul>
 					</div>

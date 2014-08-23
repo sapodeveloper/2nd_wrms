@@ -1,9 +1,9 @@
 <h1>学校・参加者登録ページ</h1>
 <br>
-<div class="uk-grid">
-	<div class="uk-width-medium-1-3">&nbsp;</div>
-	<div class="uk-width-medium-2-3">
-		<?php echo Form::open(array('action' => 'top/entry', 'class' => 'uk-form')); ?>
+<?php echo Form::open(array('action' => 'top/entry', 'class' => 'uk-form')); ?>
+	<div class="uk-grid">
+		<div class="uk-width-medium-1-3">&nbsp;</div>
+		<div class="uk-width-medium-2-3">
 			<fieldset data-uk-margin>
 				<table>
 					<tr>
@@ -68,6 +68,6 @@
 		</div>
 	</div>
 	<br>
-	<button class="uk-button uk-button-primary uk-button-large"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;登録</button>
+	<button class="uk-button uk-button-primary uk-button-large" type="submit"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;登録</button>
 <?php echo Form::close(); ?>
 <br>
